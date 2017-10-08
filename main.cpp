@@ -44,10 +44,10 @@ void dedup(std::string inpath, std::string outpath)
     {
         int readbyte=(ifilesize>=CHUNK_SIZE?CHUNK_SIZE:ifilesize);
 
-        ifile.read(buffer,CHUNK_SIZE);
+        ifile.read(buffer,readbyte);
         buffer[CHUNK_SIZE]=0;
         
-        std::string key(buffer);
+        std::string key(buffer,readbyte);
         
         if(mymap.find(key)!=mymap.end())
         {
